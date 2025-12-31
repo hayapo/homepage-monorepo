@@ -1,0 +1,29 @@
+# top-most EditorConfig file
+root = true
+
+# Unix-style newlines with a newline ending every file
+[*]
+end_of_line = lf
+insert_final_newline = true
+charset = utf-8
+trim_trailing_whitespace = true
+indent_style = space
+max_line_length = 120
+
+# CSS
+[*.css]
+indent_size = 2
+
+# TypeScript, JavaScript
+[*.{ts,tsx,js}]
+indent_size = 2
+quote_type = single
+
+# JSON, XML
+[*.{json,xml}]
+indent_size = 2
+
+# YAML
+[*.{yaml,yml}]
+indent_size = 2
+quote_type = single
