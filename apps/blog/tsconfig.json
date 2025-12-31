@@ -1,0 +1,15 @@
+{
+	"extends": "@repo/typescript-config/vite.json",
+	"compilerOptions": {
+		"target": "ESNext",
+		"module": "ESNext",
+		"moduleResolution": "Bundler",
+		"strict": true,
+		"skipLibCheck": true,
+		"lib": ["ESNext", "DOM"],
+		"types": ["vite/client"],
+		"jsx": "react-jsx",
+		"jsxImportSource": "hono/jsx"
+	},
+	"include": ["**/*.ts", "**/*.tsx"]
+}

@@ -1,0 +1,67 @@
+code {
+	@apply text-sm md:text-base !leading-loose;
+}
+
+code[data-theme],
+code[data-theme] span,
+pre > code {
+	color: var(--shiki);
+	background-color: var(--shiki-bg);
+}
+
+code[data-line-numbers] {
+	counter-reset: line;
+}
+
+code[data-line-numbers] > [data-line]::before {
+	display: inline-block;
+	width: 12px;
+	margin-right: 1rem;
+	color: gray;
+	text-align: right;
+	content: counter(line);
+	counter-increment: line;
+}
+
+code[data-line-numbers-max-digits="2"] > [data-line]::before {
+	width: 1.25rem;
+}
+
+code[data-line-numbers-max-digits="3"] > [data-line]::before {
+	width: 1.75rem;
+}
+
+code[data-line-numbers-max-digits="4"] > [data-line]::before {
+	width: 2.25rem;
+}
+
+figure[data-rehype-pretty-code-figure] [data-line] {
+	@apply px-2 border-l-4 border-transparent;
+}
+
+figure[data-rehype-pretty-code-figure] span[data-line][data-highlighted-line] {
+	@apply bg-sky-900 border-sky-300;
+}
+
+figure[data-rehype-pretty-code-figure] {
+	@apply w-full mt-4;
+}
+
+figure[data-rehype-pretty-code-figure]:has(> [data-rehype-pretty-code-title])
+	pre {
+	@apply rounded-t-none;
+}
+
+[data-rehype-pretty-code-figure] pre {
+	@apply p-2 overflow-x-auto rounded-lg;
+}
+
+figcaption[data-rehype-pretty-code-title] {
+	@apply bg-gray-300 dark:bg-gray-700 text-sm py-2 px-4 rounded-t-lg dark:text-gray-12;
+}
+
+td > code,
+p > code,
+li > code {
+	@apply bg-gray-4 mx-1 p-1 rounded-sm;
+}

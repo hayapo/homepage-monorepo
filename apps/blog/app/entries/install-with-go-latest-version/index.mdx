@@ -1,0 +1,44 @@
+---
+title: Goの最新バージョンを取ってくる
+description: Goの最新バージョンを取ってくる方法を紹介します
+tags: ["Go"]
+publishedAt: 2023-06-11
+coverImage: ./cover.webp
+---
+
+僕は Dotfile で Rust と Go を自動でインストールするようにしてる(最近は devcontainer を使うこともあるけど)
+
+Rust はこんな感じのスクリプトで最新バージョンを簡単に取ってこれる
+
+```bash
+curl --proto '=https' --tlsv1.2 -sSf "https://sh.rustup.rs" | sh
+```
+
+しかし、{<a  href="https://go.dev/doc/install" title="Go の公式インストールページ" >Go の公式インストールページ</a>}
+にあるインストール方法は、 まず OS ごとのインストールファイルをダウンロードしてから以下のスクリプトで解凍する流れになっている。
+
+```bash
+# go version 1.20.5をインストールする場合
+rm -rf /usr/local/go && tar -C /usr/local -xzf go1.20.5.linux-amd64.tar.gz
+```
+
+この方法だと、手動で最新のインストールファイルをダウンロードする必要がある。
+
+### 解決策
+
+Go の公式ページには最新バージョンを教えてくれる{<a href="https://go.dev/VERSION" title="Go">エンドポイント</a>}の公式インストールページがあって、
+
+この url に?m=text を渡して curl するとテキストで最新のバージョンを取得できる
+
+```bash
+curl "https://go.dev/VERSION?m=text" # >> 1.20.5 (2023年6月11日時点)
+```
+
+あとは、このコマンドを wget で指定した url のバージョン指定部分に埋め込んで
+<a href="https://www.gnu.org/savannah-checkouts/gnu/bash/manual/bash.html#Command-Substitution" title="Comand Substitution" >Command Substitution</a>
+インストールすれば終わり
+
+```bash
+wget "https://go.dev/dl/$(curl 'https://go.dev/VERSION?m=text').linux-amd64.tar.gz"
+rm -rf /usr/local/go && tar -C /usr/local -xzf go*.linux-amd64.tar.gz
+```

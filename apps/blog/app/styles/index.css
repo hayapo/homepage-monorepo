@@ -1,0 +1,5 @@
+@import "tailwindcss" source("../../app");
+@import "./syntax-highlight.css";
+@import "./colors.css";
+@plugin "@tailwindcss/typography";
+@import "./article.css";

@@ -1,0 +1,110 @@
+.article {
+	:where(p) {
+		margin-top: 1.25em;
+		margin-bottom: 1.25em;
+	}
+
+	:where(h1) {
+		font-size: clamp(1.5rem, 1.136rem + 1.82vw, 2.5rem);
+		@apply mb-4;
+	}
+
+	h2 {
+		font-size: clamp(1.5rem, 1.318rem + 0.91vw, 2.25rem);
+		@apply mb-2;
+	}
+
+	h3 {
+		font-size: clamp(1.25rem, 1.159rem + 0.45vw, 2rem);
+		@apply mb-2;
+	}
+
+	h4 {
+		font-size: clamp(1.125rem, 1.08rem + 0.23vw, 1.25rem);
+		@apply mb-1;
+	}
+
+	blockquote {
+		@apply border-l-3 pl-4 border-gray-8 text-gray-10 italic;
+	}
+
+	ul {
+		@apply text-base pl-8 list-disc;
+	}
+
+	ol {
+		@apply text-base pl-8 list-decimal;
+	}
+
+	mark {
+		@apply bg-(--color-green-a6);
+	}
+
+	:whrere(kbd) {
+		@apply dark:text-gray-12;
+	}
+
+	:where(thead) {
+		@apply text-lg border-b-gray-9 border-b-1;
+	}
+
+	:where(thead th) {
+		@apply font-medium align-bottom pe-[0.5714286em] ps-[0.5714286em] pb-[0.5714286em];
+	}
+
+	:where(thead th:first-child) {
+		@apply ps-0;
+	}
+
+	:where(thead th:last-child) {
+		@apply pe-0;
+	}
+
+	:where(th, td) {
+		@apply text-start;
+	}
+
+	:where(tbody tr) {
+		@apply border-b-1 border-b-gray-9;
+	}
+
+	:where(tbody tr:last-child) {
+		@apply border-b-0;
+	}
+
+	:where(tbody td, tfoot td) {
+		@apply pt-[0.5714286em] pe-[0.5714286em] pb-[0.5714286em] ps-[0.5714286em];
+	}
+
+	:where(tbody td:first-child, tfoot td:first-child) {
+		@apply ps-0;
+	}
+
+	:where(tbody td:last-child, tfoot td:last-child) {
+		@apply pe-0;
+	}
+
+	:where(table) {
+		@apply mt-4;
+	}
+
+	:where(hr + *) {
+		@apply mt-0;
+	}
+
+	:where(h1 + *) {
+		@apply mt-0;
+	}
+
+	:where(h2 + *) {
+		@apply mt-0;
+	}
+
+	:where(h3 + *) {
+		@apply mt-0;
+	}
+
+	:where(h4 + *) {
+		@apply mt-0;
+	}
+}

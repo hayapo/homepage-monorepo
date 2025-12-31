@@ -1,0 +1,211 @@
+---
+title: ブログをAstroに移行しました
+description: ブログをAstroに移行したので、そのメモです。
+tags: ["Typescript", "Astro"]
+publishedAt: 2023-08-29
+coverImage: ./cover.webp
+---
+
+今回、個人ブログを Next.js から Astro に移行しました。
+
+それに合わせてスタイリングも Chakra UI から ずっと触ってみたかった Panda CSS に変更しました。
+
+## なぜ Astro に移行したのか
+
+以前から Astro を触りたいな―と思っていたり、<cite>Twitter[^1]</cite> などで Astro はいいぞみたいなことを見かけていたので、  
+今回ブログを移行するにあたって Astro にしてみました。
+[^1]: 今は X
+
+あと、Deno の Web フレームワークの Fresh を使って <a href="https://hayapo.dev/" title="hayapo web site">個人サイト</a>
+を作ったときに Astro の<a href="https://docs.astro.build/ja/concepts/islands" title="Islands Architecture">Islands Architecture</a><cite>[^2]</cite>
+を知ったのも理由の一つです。
+[^2]: Jason Miller 氏の記事は<a href="https://jasonformat.com/islands-architecture" title="hayapo web site">こちら</a>
+
+### Astro に移行する
+
+Astro の公式サイトを参考に Next.js から Astro に移行しました。  
+Next.js との違いとかはドキュメントで詳しく解説されてます。
+
+書き味は Next.js とほぼ同じなので、移行はそこまで難しくなかったです。
+
+## MDX でブログを入稿する (Content Collections)
+
+ブログを移行するにあたって、今まで microCMS で管理していた記事を MDX で管理・入稿できるようにしました。
+
+今回の移行にあたって、リッチエディタで記事を書くよりも、MDX で記事を書いたほうが良いと思ったからです。
+
+また、自分ひとりで管理するので microCMS のようなオンラインのヘッドレス CMS よりも MDX で管理したほうが多分楽です。
+
+### Content Collections
+
+Astro では<a href="https://docs.astro.build/en/guides/content-collections/" title="Astro Content Collections">Content Collections</a>
+という機能を使うことで、簡単かつ型安全に MDX で記事を管理できます。
+
+Astro では`src/content`が予約ディレクトリとなり、直下にあるディレクトリがコレクションとして認識されます。
+
+例えばこんな感じにすると、`blog`というコレクションが作成されます。
+
+```markdown
+src/content
+├── blog
+│   ├── article-1.mdx
+│   ├── article-2.mdx
+│   ├── article-3.mdx
+└── config.ts
+```
+
+これで`src/content/config.ts`に以下のように設定すると、`blog`コレクションの記事を MDX で管理できるようになります。
+
+```ts
+import { defineCollection } from "astro:content";
+const blogCollection = defineCollection({
+  /* ... */
+});
+export const collections = {
+  blog: blogCollection, // content直下のフォルダ名と一致させる
+};
+```
+
+そして、`src/pages`に`[...slug].astro`ファイルを作成すると、`src/content/blog`以下の記事を全てページとして生成してくれます。
+
+```tsx
+---
+import type { CollectionEntry } from "astro:content";
+import { getBlogEntries } from "../utils/blog";
+import BlogPost from "../layouts/BlogPost.astro";
+
+// すべての記事を取得して、ページを生成する
+export async function getStaticPaths() {
+  const posts = await getBlogEntries();
+
+  return posts.map((post) => ({
+    params: {slug: post.slug},
+    props: post
+  }))
+}
+
+type Props = CollectionEntry<"blog">;
+const post = Astro.props
+const { Content } = await post.render()
+---
+
+<BlogPost {...post.data}>
+  <Content />
+</BlogPost>
+```
+
+#### Frontmatter のバリデーション
+
+また、zod を使った`Frontmatter`のバリデーションもできます。
+
+例えばこんな感じの `Frontmatter` だとする
+
+```mdx
+---
+slug: blog-renewal-to-astro
+title: ブログをAstroに移行しました
+description: ブログをAstroに移行したので、そのメモです。
+tags: ["Typescript", "Astro"]
+publishedAt: 2023-08-29
+---
+```
+
+この場合`src/content/config.ts`で以下のようにバリデーションできる
+
+```ts
+import { defineCollection, z } from "astro:content";
+
+const blogCollection = defineCollection({
+  type: "content",
+  schema: ({ image }) =>
+    z.object({
+      title: z.string(),
+      tags: z.array(z.string()),
+      description: z.string(),
+      publishedAt: z.date(),
+    }),
+});
+
+export const collections = {
+  blog: blogCollection,
+} as const;
+```
+
+## Panda CSS に変更した
+
+以前のブログはスタイリングに Chakra UI を使っていましたが、今回は Panda CSS を使ってみました。
+
+Panda CSS は Chakra UI が開発した Zero Runtime な CSS-in-JS です。
+
+Design Tokens <cite>[^3]</cite> などもサポートしているので、かなり開発体験が良かったです。
+[^3]: W3C の<a href="https://tr.designtokens.org/format/" title="W3C Design Tokens">Design Tokens Format</a>
+
+## Panda CSS でダークモード
+
+`panda.config.ts`に以下のように設定するだけで、Panda CSS でも簡単にダークモードを実装できます。
+
+```ts
+import { defineConfig } from "@pandacss/dev";
+
+export default defineConfig({
+  // ...
+  conditions: {
+    dark: ".dark &",
+  },
+  //...
+});
+```
+
+これでスタイリングのときに`_dark: {color: "white"}`のように書くだけで、ダークモードに対応できます。
+
+```tsx
+import { css } from "{project-root}/styled-system/css";
+
+// ダークモードのときは白色にする
+<h1
+  class={css({
+    color: {
+      base: "#000",
+      _dark: "#FFF",
+    },
+  })}
+>
+  Hello World
+</h1>;
+```
+
+普通は`Semantic Tokens`を使ってダークモード時の色を定義するのが良さそう
+
+```ts
+// panda.config.ts
+import { defineConfig } from "@pandacss/dev";
+
+export default defineConfig({
+  // ...
+  semanticTokens: {
+    colors: {
+      text: {
+        base: "#000",
+        _dark: "#FFF",
+      },
+    },
+  },
+  //...
+});
+```
+
+こうすると先程の例がよりシンプルに書ける
+
+```tsx
+import { css } from "{project-root}/styled-system/css";
+
+<h1 class={css({ colors: "text" })}>Hello World</h1>;
+```
+
+## まとめ
+
+Next.js+Chakra UI で作ったブログを Astro+Panda CSS に移行した話をしました。
+
+Astro はデフォルトで JS 配信が無いサイトを作ることができるので、ブログのような Content First なサイトを作るのに向いていると思います。
+
+あと、React や Preact, Svelte などの自分の好きな UI フレームワークを使うことができるのもとても良いです。
