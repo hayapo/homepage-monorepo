@@ -4,11 +4,13 @@
 	"description": "",
 	"main": "index.js",
 	"type": "module",
+	"sideEffects": ["*.css"],
 	"exports": {
-		".": "./index.ts",
-		"./mount-header": "./utils/mountHeader.ts",
-		"./initialize-header": "./utils/initializeHeader.ts",
-		"./constants": "./constants.ts"
+		".": "./src/index.ts",
+		"./mount-header": "./src/utils/mountHeader.ts",
+		"./initialize-header": "./src/utils/initializeHeader.ts",
+		"./constants": "./src/constants.ts",
+		"./index.css": "./src/css/index.css"
 	},
 	"scripts": {},
 	"keywords": [],

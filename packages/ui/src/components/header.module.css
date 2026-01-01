@@ -1,0 +1,16 @@
+.header {
+  width: var(--max-width);
+  margin: 0 auto;
+  height: var(--header-height);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title {
+  font-size: var(--header-fontsize);
+}
+
+.link:hover {
+  text-decoration: underline;
+}

@@ -1,0 +1,92 @@
+code {
+  font-size: 0.875rem;
+  line-height: 2 !important;
+}
+
+code[data-theme],
+code[data-theme] span,
+pre > code {
+	color: var(--shiki);
+	background-color: var(--shiki-bg);
+}
+
+code[data-line-numbers] {
+	counter-reset: line;
+}
+
+code[data-line-numbers] > [data-line]::before {
+	display: inline-block;
+	width: 12px;
+	margin-right: 1rem;
+	color: var(--color-gray-10);
+	text-align: right;
+	content: counter(line);
+	counter-increment: line;
+}
+
+code[data-line-numbers-max-digits="2"] > [data-line]::before {
+	width: 1.25rem;
+}
+
+code[data-line-numbers-max-digits="3"] > [data-line]::before {
+	width: 1.75rem;
+}
+
+code[data-line-numbers-max-digits="4"] > [data-line]::before {
+	width: 2.25rem;
+}
+
+figure[data-rehype-pretty-code-figure] [data-line] {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  border-left-width: 4px;
+  border-left-style: solid;
+  border-color: transparent;
+}
+
+figure[data-rehype-pretty-code-figure] span[data-line][data-highlighted-line] {
+  background-color: var(--color-green-a5);
+  border-color: var(--color-green-10);
+}
+
+figure[data-rehype-pretty-code-figure] {
+	width: 100%;
+  margin-top: 1rem;
+}
+
+figure[data-rehype-pretty-code-figure]:has(> [data-rehype-pretty-code-title])
+	pre {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+[data-rehype-pretty-code-figure] pre {
+  padding: 0.5rem;
+  overflow-x: auto;
+  border-radius: 0.5rem;
+}
+
+figcaption[data-rehype-pretty-code-title] {
+	/* @apply bg-gray-300 dark:bg-gray-700 text-sm py-2 px-4 rounded-t-lg dark:text-gray-12; */
+  background-color: var(--color-gray-7);
+  color: var(--color-gray-12);
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+}
+
+td > code,
+p > code,
+li > code {
+	/* @apply bg-gray-4 mx-1 p-1 rounded-sm; */
+  background-color: var(--color-gray-5);
+  margin-left: 0.25rem;
+  margin-right: 0.25rem;
+  padding: 0.25rem;
+  border-radius: 0.25rem;
+}
