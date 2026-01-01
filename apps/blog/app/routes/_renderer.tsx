@@ -1,7 +1,7 @@
 import { Style } from "hono/css";
 import { jsxRenderer } from "hono/jsx-renderer";
 import { Link, Script } from "honox/server";
-import { Header } from "../components/Header/Header";
+import { Header } from "../components/Header/$Header";
 
 export default jsxRenderer(({ children }) => {
 	return (
@@ -15,8 +15,8 @@ export default jsxRenderer(({ children }) => {
 				<Style />
 				<Link href="/app/styles/index.css" rel="stylesheet" />
 			</head>
-			{/* 
-			TODO: 
+			{/*
+			TODO:
 				メディアクエリ周りをいい感じにする。
 				スクリーンサイズに合わせて header と main の width を三段階くらいで調整したい
 			*/}

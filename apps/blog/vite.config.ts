@@ -19,6 +19,11 @@ const root = fileURLToPath(new URL(".", import.meta.url));
 
 export default defineConfig({
 	root,
+	build: {
+		modulePreload: {
+			polyfill: true,
+		},
+	},
 	plugins: [
 		honox({
 			devServer: { adapter },

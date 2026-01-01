@@ -3,3 +3,7 @@
 @import "./colors.css";
 @plugin "@tailwindcss/typography";
 @import "./article.css";
+
+@view-transition {
+  navigation: auto;
+}
