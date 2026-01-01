@@ -36,7 +36,7 @@ export interface MarkdownHeading {
 
 今回の記事では上記の方法を使用して、目次を実装する方法を説明します。
 
-## `ContentEntryMap`型での実装
+## ContentEntryMap 型での実装
 
 `CollectionEntry<"YOUR_COLLECTION_NAME">`に含まれる`ContentEntryMap`型に実装された、`render`メソッドを使用して目次を実装します。
 
@@ -74,7 +74,7 @@ declare module 'astro:content' {
 
 ここでは、`[slug].astro`での実装方法を説明します。
 
-コード内の`BaseLayout`は例示用のダミーです。  
+コード内の`BaseLayout`は例示用のダミーです。
 適宜、自身で定義したLayoutコンポーネントを使用してください。
 
 
@@ -127,7 +127,7 @@ const { Content, headings } = await post.render();
 
 ![image](./simple-toc.webp)
 
-もちろん記事用のLayoutコンポーネントを作成して、そのコンポーネントにheadingsを渡すこともできます。  
+もちろん記事用のLayoutコンポーネントを作成して、そのコンポーネントにheadingsを渡すこともできます。
 このブログの場合は`[slug].astro`で記事用Layoutコンポーネントにheadingsを渡しています。
 
 ## まとめ
