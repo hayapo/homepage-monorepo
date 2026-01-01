@@ -1,5 +1,9 @@
 {
-  "extends": "@repo/typescript-config/base.json",
-  "include": ["."],
-  "exclude": ["node_modules"]
+	"extends": "@repo/typescript-config/react-library.json",
+	"compilerOptions": {
+		"jsx": "react-jsx",
+		"jsxImportSource": "react"
+	},
+	"include": ["."],
+	"exclude": ["node_modules"]
 }

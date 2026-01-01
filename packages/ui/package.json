@@ -1,21 +1,28 @@
 {
 	"name": "@repo/ui",
-	"version": "0.0.0",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"type": "module",
 	"exports": {
-		"./counter": "./components/counter.ts",
-		"./header": "./components/header.ts",
-		"./setup-counter": "./utils/counter.ts"
+		".": "./index.ts",
+		"./mount-header": "./utils/mountHeader.ts",
+		"./initialize-header": "./utils/initializeHeader.ts",
+		"./constants": "./constants.ts"
 	},
-	"license": "MIT",
-	"scripts": {
-		"lint": "biome lint .",
-		"biome:check": "biome check .",
-		"biome:fix": "biome check --fix ."
+	"scripts": {},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"dependencies": {
+		"react": "^19.2.3",
+		"react-dom": "^19.2.3"
 	},
 	"devDependencies": {
 		"@repo/biome-config": "workspace:*",
 		"@repo/typescript-config": "workspace:*",
-		"@biomejs/biome": "2.2.5",
+		"@types/react": "^19.2.7",
+		"@types/react-dom": "^19.2.3",
 		"typescript": "5.5.4"
 	}
 }
