@@ -1,4 +1,4 @@
-import { initializeHeader } from "@repo/ui/initialize-header";
+import { initializeHeader } from "@repo/ui";
 import { createClient } from "honox/client";
 
 initializeHeader();

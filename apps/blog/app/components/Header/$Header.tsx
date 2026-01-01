@@ -1,8 +1,4 @@
-import {
-	HEADER_HEIGHT_PX,
-	HEADER_MOUNT_EVENT,
-	HEADER_UNMOUNT_EVENT,
-} from "@repo/ui/constants";
+import { HEADER_MOUNT_EVENT, HEADER_UNMOUNT_EVENT } from "@repo/ui/constants";
 import { useEffect, useId } from "hono/jsx";
 
 export const Header = () => {
@@ -22,15 +18,10 @@ export const Header = () => {
 			);
 	}, [uniqueId]);
 	return (
-		<div style={{ height: `${HEADER_HEIGHT_PX}px` }} id={uniqueId}>
-			{/* biome-ignore lint/style/useSelfClosingElements: <explanation> */}
-			<div
-				style={{
-					height: `${HEADER_HEIGHT_PX}px`,
-					borderBottom: "1px solid #ccc",
-					padding: "1em",
-				}}
-			></div>
-		</div>
+		<header class="h-(--header-height)" id={uniqueId}>
+			<div class="h-(--header-height) max-w-(--max-width) mx-auto flex justify-between items-center">
+				<div class="text-(length:--header-fontsize)">hayapo.dev</div>
+			</div>
+		</header>
 	);
 };
