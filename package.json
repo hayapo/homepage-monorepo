@@ -11,5 +11,5 @@
 		"turbo": "^2.7.2"
 	},
 	"packageManager": "pnpm@8.15.6",
-	"name": "with-vite"
+	"name": "homepage-monorepo"
 }
