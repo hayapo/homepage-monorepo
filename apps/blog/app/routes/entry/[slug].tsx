@@ -10,12 +10,13 @@ export default createRoute(
 	),
 	async (c) => {
 		const slug = c.req.param("slug");
+		if (!slug) return;
 		const entry = getEntryByEntryName(slug);
 		if (!entry) {
 			return c.render(<h2>記事が見つからないよ &gt;&lt; </h2>);
 		}
 		return c.render(
-			<article className="article">{entry.Component({})}</article>,
+			<article className="article pb-[2rem]">{entry.Component({})}</article>,
 		);
 	},
 );

@@ -43,7 +43,7 @@ export const getEntries = () => {
 	return entriesData;
 };
 
-export const getEntryByEntryName = (entryName: string) => {
+export const getEntryByEntryName = (slug: string) => {
 	const entries = getEntries();
-	return entries.find((entry) => entry.id === entryName);
+	return entries.find((entry) => entry.id === slug);
 };

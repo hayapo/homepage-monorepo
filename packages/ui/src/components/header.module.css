@@ -1,5 +1,5 @@
 .header {
-  width: var(--max-width);
+  max-width: var(--max-width);
   margin: 0 auto;
   height: var(--header-height);
   display: flex;
@@ -8,7 +8,8 @@
 }
 
 .title {
-  font-size: var(--header-fontsize);
+  font-size: var(--header-font-size);
+  font-weight: var(--header-font-weight);
 }
 
 .link:hover {
