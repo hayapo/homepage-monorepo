@@ -16,19 +16,20 @@ export default jsxRenderer(({ children }) => {
         <Script src="/app/client.ts" async />
         <Style />
         {/*<Link href="/app/styles/index.css" rel="stylesheet" />*/}
+        {/* TODO: build時にスタイルが読み込まれなくなってしまったので対応する*/}
         {import.meta.env.PROD ? (
-          <link href="/styles/style.css" rel="stylesheet" />
+          <link href="/styles/index.css" rel="stylesheet" />
         ) : (
-          <link href={styles} rel="stylesheet" />
+          <Link href={styles} rel="stylesheet" />
         )}
-        {import.meta.env.PROD ? <script src="/static/theme.js" /> : <script src="/app/initTheme.ts" />}
+        {import.meta.env.PROD ? <script src="/static/initTheme.js" /> : <script src="/app/initTheme.ts" />}
       </head>
       {/*
 			TODO:
 				メディアクエリ周りをいい感じにする。
 				スクリーンサイズに合わせて header と main の width を三段階くらいで調整したい
 			*/}
-      <body class="mx-4 bg-background text-gray-12 h-svh">
+      <body className="mx-4 bg-background text-gray-12 h-svh">
         <Header />
         <main class="max-w-(--max-width) mx-auto">{children}</main>
       </body>

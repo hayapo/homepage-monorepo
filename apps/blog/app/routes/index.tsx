@@ -9,7 +9,7 @@ export default createRoute((c) => {
       {entries.map((entry) => {
         return (
           <li key={entry.id} class="list-none my-5">
-            <a href={`/entries/${entry.id}`} class="hover:underline hover:text-green-8">
+            <a href={`/entries/${entry.id}/`} class="hover:underline hover:text-green-8">
               {entry.frontmatter.title}
             </a>
           </li>
