@@ -29,7 +29,7 @@ export default jsxRenderer(({ children }) => {
 				メディアクエリ周りをいい感じにする。
 				スクリーンサイズに合わせて header と main の width を三段階くらいで調整したい
 			*/}
-      <body className="mx-4 bg-background text-gray-12 h-svh">
+      <body className="mx-4 bg-background text-primary h-svh font-mono">
         <Header />
         <main class="max-w-(--max-width) mx-auto">{children}</main>
       </body>
