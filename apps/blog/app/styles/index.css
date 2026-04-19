@@ -2,10 +2,10 @@
 @import "./article.css";
 @import "@repo/ui/index.css";
 
-@view-transition {
-  navigation: auto;
-}
-
 @theme {
   --text-header: var(--header-fontsize);
+}
+
+html {
+  scrollbar-gutter: stable;
 }

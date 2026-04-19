@@ -56,7 +56,7 @@
 		@apply bg-(--color-green-a6);
 	}
 
-	:whrere(kbd) {
+	:where(kbd) {
 		@apply dark:text-gray-12;
 	}
 
