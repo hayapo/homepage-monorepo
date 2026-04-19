@@ -4,6 +4,8 @@
 
 @theme {
   --text-header: var(--header-fontsize);
+  --color-primary: var(--color-gray-12);
+  --color-secondary: var(--color-gray-11);
 }
 
 html {

@@ -1,134 +1,156 @@
 .article {
-	:where(p) {
-		margin-top: 1.25em;
-		margin-bottom: 1.25em;
-	}
+  :where(p) {
+    margin-top: 1.25em;
+    margin-bottom: 1.25em;
+  }
 
-  h1::before { content: "# "; font-size: 0.8em }
-  h2::before { content: "## "; font-size: 0.8em }
-  h3::before { content: "### "; font-size: 0.8em }
-  h4::before { content: "#### "; font-size: 0.8em }
-  h5::before { content: "##### "; font-size: 0.8em }
-  h6::before { content: "###### "; font-size: 0.8em }
+  h1::before {
+    content: "# ";
+    font-size: 0.8em;
+  }
+  h2::before {
+    content: "## ";
+    font-size: 0.8em;
+  }
+  h3::before {
+    content: "### ";
+    font-size: 0.8em;
+  }
+  h4::before {
+    content: "#### ";
+    font-size: 0.8em;
+  }
+  h5::before {
+    content: "##### ";
+    font-size: 0.8em;
+  }
+  h6::before {
+    content: "###### ";
+    font-size: 0.8em;
+  }
 
-	:where(h1) {
-		font-size: clamp(1.75rem, 1.568rem + 0.91vw, 2.25rem);
+  :where(h1) {
+    font-size: clamp(1.75rem, 1.568rem + 0.91vw, 2.25rem);
     font-weight: 600;
-		@apply mb-4;
-	}
+    @apply mb-4;
+  }
 
-	:where(h2) {
-		font-size: clamp(1.5rem, 1.318rem + 0.91vw, 2rem);
+  :where(h2) {
+    font-size: clamp(1.5rem, 1.318rem + 0.91vw, 2rem);
     font-weight: 600;
-		@apply mb-2;
-	}
+    @apply mb-2;
+  }
 
-	:where(h3) {
-		font-size: clamp(1.25rem, 1.068rem + 0.91vw, 1.75rem);
+  :where(h3) {
+    font-size: clamp(1.25rem, 1.068rem + 0.91vw, 1.75rem);
     font-weight: 600;
-		@apply mb-2;
-	}
+    @apply mb-2;
+  }
 
-	:where(h4) {
-		font-size: clamp(1.125rem, 1.08rem + 0.23vw, 1.25rem);
+  :where(h4) {
+    font-size: clamp(1.125rem, 1.08rem + 0.23vw, 1.25rem);
     font-weight: 500;
-		@apply mb-1;
-	}
+    @apply mb-1;
+  }
 
   :where(h5) {
     font-size: clamp(1rem, 0.955rem + 0.23vw, 1.125rem);
     font-weight: 500;
   }
 
-	:where(blockquote) {
-		@apply border-l-3 pl-4 border-gray-8 text-gray-10 italic;
-	}
+  :where(blockquote) {
+    @apply border-l-3 pl-4 border-gray-8 text-gray-10 italic;
+  }
 
-	:where(ul) {
-		@apply text-base pl-8 list-disc;
-	}
+  :where(ul) {
+    @apply text-base pl-8 list-disc;
+  }
 
-	:where(ol) {
-		@apply text-base pl-8 list-decimal;
-	}
+  :where(ol) {
+    @apply text-base pl-8 list-decimal;
+  }
 
-	:where(mark) {
-		@apply bg-(--color-green-a6);
-	}
+  :where(mark) {
+    @apply bg-(--color-green-a6);
+  }
 
-	:where(kbd) {
-		@apply dark:text-gray-12;
-	}
+  :where(kbd) {
+    @apply dark:text-gray-12;
+  }
 
-	:where(thead) {
-		@apply text-lg border-b-gray-9 border-b-1;
-	}
+  :where(thead) {
+    @apply text-lg border-b-gray-9 border-b-1;
+  }
 
-	:where(thead th) {
-		@apply font-medium align-bottom pe-[0.5714286em] ps-[0.5714286em] pb-[0.5714286em];
-	}
+  :where(thead th) {
+    @apply font-medium align-bottom pe-[0.5714286em] ps-[0.5714286em] pb-[0.5714286em];
+  }
 
-	:where(thead th:first-child) {
-		@apply ps-0;
-	}
+  :where(thead th:first-child) {
+    @apply ps-0;
+  }
 
-	:where(thead th:last-child) {
-		@apply pe-0;
-	}
+  :where(thead th:last-child) {
+    @apply pe-0;
+  }
 
-	:where(th, td) {
-		@apply text-start;
-	}
+  :where(th, td) {
+    @apply text-start;
+  }
 
-	:where(tbody tr) {
-		@apply border-b-1 border-b-gray-9;
-	}
+  :where(tbody tr) {
+    @apply border-b-1 border-b-gray-9;
+  }
 
-	:where(tbody tr:last-child) {
-		@apply border-b-0;
-	}
+  :where(tbody tr:last-child) {
+    @apply border-b-0;
+  }
 
-	:where(tbody td, tfoot td) {
-		@apply pt-[0.5714286em] pe-[0.5714286em] pb-[0.5714286em] ps-[0.5714286em];
-	}
+  :where(tbody td, tfoot td) {
+    @apply pt-[0.5714286em] pe-[0.5714286em] pb-[0.5714286em] ps-[0.5714286em];
+  }
 
-	:where(tbody td:first-child, tfoot td:first-child) {
-		@apply ps-0;
-	}
+  :where(tbody td:first-child, tfoot td:first-child) {
+    @apply ps-0;
+  }
 
-	:where(tbody td:last-child, tfoot td:last-child) {
-		@apply pe-0;
-	}
+  :where(tbody td:last-child, tfoot td:last-child) {
+    @apply pe-0;
+  }
 
-	:where(table) {
-		@apply mt-4;
-	}
+  :where(table) {
+    @apply mt-4;
+  }
 
-	:where(hr + *) {
-		@apply mt-0;
-	}
+  :where(hr + *) {
+    @apply mt-0;
+  }
 
-	:where(h1 + *) {
-		@apply mt-0;
-	}
+  :where(h1 + *) {
+    @apply mt-0;
+  }
 
-	:where(h2 + *) {
-		@apply mt-0;
-	}
+  :where(h2 + *) {
+    @apply mt-0;
+  }
 
-	:where(h3 + *) {
-		@apply mt-0;
-	}
+  :where(h3 + *) {
+    @apply mt-0;
+  }
 
-	:where(h4 + *) {
-		@apply mt-0;
-	}
+  :where(h4 + *) {
+    @apply mt-0;
+  }
 
   :where(p) {
     line-height: 170%;
   }
 
   :where(a) {
-    @apply underline hover:text-green-8;
+    @apply underline underline-offset-3 hover:text-green-8;
+  }
+
+  :where(figure) {
+    @apply my-4;
   }
 }
