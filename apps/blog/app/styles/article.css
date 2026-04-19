@@ -127,4 +127,8 @@
   :where(p) {
     line-height: 170%;
   }
+
+  :where(a) {
+    @apply underline hover:text-green-8;
+  }
 }
