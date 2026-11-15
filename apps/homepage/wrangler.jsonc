@@ -1,6 +1,7 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "homepage",
+  "routes": [{ "pattern": "hayapo.dev", "custom_domain": true }],
   "main": "./dist/index.js",
   "compatibility_date": "2026-03-22",
   "compatibility_flags": [

@@ -1,3 +1,7 @@
 @import "./colors.css";
 @import "./config.css";
 @import "./syntax-highlight.css";
+
+@theme inline {
+  --color-hover: var(--color-green-8);
+}

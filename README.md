@@ -7,8 +7,7 @@
 ### Apps
 
 - `apps/blog` - ブログ本体。HonoX + Vite で構成されていて、mdxで記事を執筆する。
-- `apps/web` - メインの Web サイト（Vite）
-- `apps/docs` - ドキュメント/サンドボックス（Vite）
+- `apps/homepage` - メインの Web サイト（HonoX + Vite）
 
 ### Packages
 
@@ -19,7 +18,7 @@
 ## 事前準備
 
 - Node.js
-- pnpm `8.15.6`
+- pnpm `12.14.0`
 
 ## セットアップ
 
@@ -41,11 +40,12 @@ pnpm format  # Biome fix
 
 ```sh
 pnpm --filter blog dev
-pnpm --filter web dev
-pnpm --filter docs dev
+pnpm --filter homepage dev
 ```
 
 ## メモ
 
 - ルートのコマンドは Turborepo 経由で各パッケージの同名タスクを実行します。
 - それぞれのアプリ固有の詳細は `apps/*` 内の設定や `package.json` を参照してください。
+
+ブログのベースパス設定・開発URL・デプロイ手順は [ブログのREADME](apps/blog/README.md) を参照してください。

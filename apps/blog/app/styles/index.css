@@ -3,11 +3,37 @@
 @import "@repo/ui/index.css";
 
 @theme {
-  --text-header: var(--header-fontsize);
-  --color-primary: var(--color-gray-12);
-  --color-secondary: var(--color-gray-11);
+	--text-header: var(--header-fontsize);
+	--color-primary: var(--color-gray-12);
+	--color-secondary: var(--color-gray-11);
 }
 
 html {
-  scrollbar-gutter: stable;
+	scrollbar-gutter: stable;
+}
+
+html:has(#entry-toc) {
+	scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	html:has(#entry-toc) {
+		scroll-behavior: auto;
+	}
+}
+
+::selection {
+	color: var(--color-green-12);
+	background-color: var(--color-green-4);
+}
+
+:root {
+	--content-width: min(800px, calc(100vw - 2rem));
+	--max-width: calc(var(--content-width) + 2rem);
+}
+
+@media (min-width: 64rem) {
+	:root {
+		--content-width: min(800px, calc(66.666667vw - 1.333rem));
+	}
 }
