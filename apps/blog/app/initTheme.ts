@@ -1,14 +1,8 @@
-(() => {
-	if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-		document.documentElement.classList.add("dark");
-	}
-})();
-window
-	.matchMedia("(prefers-color-scheme: dark)")
-	.addEventListener("change", (e: MediaQueryListEvent) => {
-		if (e.matches) {
-			document.documentElement.classList.add("dark");
-		} else {
-			document.documentElement.classList.remove("dark");
-		}
-	});
+const media = window.matchMedia('(prefers-color-scheme: dark)');
+
+const applyTheme = () => {
+	document.documentElement.classList.toggle('dark', media.matches);
+};
+
+applyTheme();
+media.addEventListener('change', applyTheme);

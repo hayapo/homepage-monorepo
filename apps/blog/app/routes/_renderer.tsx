@@ -1,38 +1,54 @@
 import { Style } from "hono/css";
 import { jsxRenderer } from "hono/jsx-renderer";
-import { Link, Script } from "honox/server";
-import { Header } from "../components/Header/$Header";
-import styles from "/app/styles/index.css?url";
+import { HasIslands, Link, Script } from "honox/server";
+import { Footer } from "../components/Footer/Footer";
+import { Header } from "../islands/Header";
+import { blogUrl } from "../lib/url";
 
 export default jsxRenderer(({ children }) => {
-  return (
-    <html lang="ja">
-      <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>hayapo.dev</title>
-        <link rel="icon" href="/favicon.ico" />
-        {/*<script src="/app/initTheme.ts" />*/}
-        <Script src="/app/client.ts" async />
-        <Style />
-        {/*<Link href="/app/styles/index.css" rel="stylesheet" />*/}
-        {/* TODO: build時にスタイルが読み込まれなくなってしまったので対応する*/}
-        {import.meta.env.PROD ? (
-          <link href="/styles/index.css" rel="stylesheet" />
-        ) : (
-          <Link href={styles} rel="stylesheet" />
-        )}
-        {import.meta.env.PROD ? <script src="/static/initTheme.js" /> : <script src="/app/initTheme.ts" />}
-      </head>
-      {/*
+	return (
+		<html lang="ja">
+			<head>
+				<meta charset="utf-8" />
+				<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+				<title>hayapo.dev</title>
+				<meta name="author" content="hayapo" />
+				<link rel="icon" href={blogUrl("/favicon.ico")} />
+				<script
+					src={blogUrl(
+						import.meta.env.PROD ? "/static/initTheme.js" : "/app/initTheme.ts",
+					)}
+				/>
+				{import.meta.env.PROD ? (
+					<HasIslands>
+						<Script src={blogUrl("/static/client.js")} async />
+					</HasIslands>
+				) : (
+					<Script src={blogUrl("/app/client.ts")} async />
+				)}
+				<Style />
+				<Link
+					href={
+						import.meta.env.PROD
+							? "/app/styles/index.css"
+							: blogUrl("/app/styles/index.css")
+					}
+					rel="stylesheet"
+				/>
+			</head>
+			{/*
 			TODO:
 				メディアクエリ周りをいい感じにする。
 				スクリーンサイズに合わせて header と main の width を三段階くらいで調整したい
 			*/}
-      <body className="mx-4 bg-background text-primary h-svh font-mono">
-        <Header />
-        <main class="max-w-(--max-width) mx-auto">{children}</main>
-      </body>
-    </html>
-  );
+			<body>
+				<div className="flex min-h-svh flex-col bg-background text-primary font-mono">
+					<Header />
+					<div aria-hidden="true" class="col-span-12 h-(--header-height)" />
+					<main class="min-w-0 flex-1">{children}</main>
+					<Footer />
+				</div>
+			</body>
+		</html>
+	);
 });
