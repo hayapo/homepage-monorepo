@@ -1,16 +1,20 @@
-import { Entry } from "../../lib/entries";
+import type { Entry } from '../../lib/entries';
+import { blogUrl } from '../../lib/url';
 
 type Props = {
-  entry: Entry;
+	entry: Entry;
 };
 
 export async function EntryListItem({ entry }: Props) {
-  return (
-    <section className="flex items-center gap-2">
-      <time className="text-[1em] italic text-secondary">{entry.frontmatter.publishedAt}</time>
-      <a href={`/entries/${entry.id}/`} className="hover:bg-green-a6 rounded-sm text-[1.3em] font-bold">
-        {entry.frontmatter.title}
-      </a>
-    </section>
-  );
+	return (
+		<section
+			id={entry.id}
+			className="flex flex-col items-start gap-1 md:flex-row md:items-center md:border-none md:bg-inherit md:gap-2 md:rounded-none"
+		>
+			<time className="text-[0.3em] md:text-[0.9em] italic text-secondary">{entry.frontmatter.publishedAt}</time>
+			<a href={blogUrl(`/entries/${entry.id}/`)} className="text-[0.7em] font-bold md:text-[1.0em] md:hover:text-hover">
+				{entry.frontmatter.title}
+			</a>
+		</section>
+	);
 }
