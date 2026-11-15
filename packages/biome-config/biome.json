@@ -1,23 +1,23 @@
 {
-	"$schema": "https://biomejs.dev/schemas/2.2.5/schema.json",
+	"$schema": "https://biomejs.dev/schemas/2.6.7/schema.json",
 	"vcs": {
-		"enabled": false,
+		"enabled": true,
 		"clientKind": "git",
 		"useIgnoreFile": true
 	},
 	"files": {
 		"ignoreUnknown": true,
-    "includes": ["**", "!**/tsconfig.json"]
+		"includes": ["**", "!**/tsconfig.json", "!**/README.md"]
 	},
 	"formatter": {
 		"enabled": true,
 		"indentStyle": "tab",
-    "indentWidth": 2
+		"indentWidth": 2
 	},
 	"linter": {
 		"enabled": true,
 		"rules": {
-			"recommended": true
+			"preset": "recommended"
 		}
 	},
 	"javascript": {
@@ -31,6 +31,11 @@
 			"source": {
 				"organizeImports": "on"
 			}
+		}
+	},
+	"css": {
+		"parser": {
+			"tailwindDirectives": true
 		}
 	}
 }

@@ -1,0 +1,66 @@
+{
+	"lsp": {
+		"biome": {
+			"binary": {
+				"path": "/home/hayapo/GitProjects/github.com/hayapo/homepage-monorepo/node_modules/@biomejs/biome/bin/biome",
+				"arguments": ["lsp-proxy"]
+			},
+			"settings": {
+				"inline_config": {
+					"css": {
+						"parser": {
+							"tailwindDirectives": true
+						}
+					}
+				}
+			}
+		}
+	},
+	"languages": {
+		"JavaScript": {
+			"formatter": {
+				"external": {
+					"command": "pnpm",
+					"arguments": ["exec", "biome", "format", "--stdin-file-path", "{buffer_path}"]
+				}
+			}
+		},
+		"JavaScript JSX": {
+			"formatter": {
+				"external": {
+					"command": "pnpm",
+					"arguments": ["exec", "biome", "format", "--stdin-file-path", "{buffer_path}"]
+				}
+			}
+		},
+		"TypeScript": {
+			"code_actions_on_format": {
+				"source.organizeImports": true
+			},
+			"formatter": {
+				"external": {
+					"command": "pnpm",
+					"arguments": ["exec", "biome", "format", "--stdin-file-path", "{buffer_path}"]
+				}
+			}
+		},
+		"TSX": {
+			"code_actions_on_format": {
+				"source.organizeImports": true
+			},
+			"formatter": {
+				"external": {
+					"command": "pnpm",
+					"arguments": ["exec", "biome", "format", "--stdin-file-path", "{buffer_path}"]
+				}
+			}
+		},
+		"Markdown": {
+			"format_on_save": "off"
+		},
+		"MDX": {
+			"format_on_save": "off"
+		}
+	},
+	"format_on_save": "on"
+}
