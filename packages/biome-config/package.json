@@ -7,6 +7,6 @@
     "./biome": "./biome.json"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.2.5"
+    "@biomejs/biome": "2.6.7"
   }
 }
