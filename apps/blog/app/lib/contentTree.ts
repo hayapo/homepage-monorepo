@@ -2,7 +2,7 @@ export function initContentTree() {
 	const toc = document.getElementById('entry-toc');
 	if (!toc) return;
 	const details = toc.querySelector<HTMLDetailsElement>('#entry-toc-details');
-	const mobileLayout = window.matchMedia('(max-width: 63.999rem)');
+	const mobileLayout = window.matchMedia('(max-width: 47.999rem)');
 	if (details) details.open = !mobileLayout.matches;
 	mobileLayout.addEventListener('change', (event) => {
 		if (details) details.open = !event.matches;
